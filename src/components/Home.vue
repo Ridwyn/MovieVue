@@ -79,7 +79,7 @@ export default {
     fetchMovies() {
       axios
         .get(
-          "https://api.themoviedb.org/3/movie/upcoming?api_key=98304107da83574cdac9140d458dce3d&language=en-US&page=1"
+          "https://api.themoviedb.org/3/movie/upcoming?api_key="+process.env.API_KEY+"&language=en-US&page=1"
         )
         .then(response => {
           console.log(response.data.results);

@@ -33,7 +33,7 @@ export default {
         .get(
           "https://api.themoviedb.org/3/movie/" +
             this.$route.params.movie_id +
-            "?api_key=98304107da83574cdac9140d458dce3d&language=en-US"
+            "?api_key="+process.env.API_KEY+"&language=en-US"
         )
         .then(response => {
           console.log(response.data);
