@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0 !important;
+}
+
+body {
+  background: #222;
+  color: #fff;
+  height: 100%;
+  margin: 0 !important;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+.hide {
+  height: 0;
+  visibility: none;
+}
+
+.show {
+  height: 73px;
+  transform: all 0.9 ease-in-out;
+}
