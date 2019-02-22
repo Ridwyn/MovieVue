@@ -3,7 +3,7 @@
     <div class="NavBar" id="normalNav">
       <div class="top-nav">
         <router-link v-bind:to="{name:'Home'}">
-          <img src="@/assets/logo.png" alt>
+          <img v-bind:src="logo" alt>
         </router-link>
 
         <div>
@@ -37,7 +37,7 @@
     <div v-show="show" class="NavBar" id="mobileNav">
       <div class="top-nav">
         <div id="logo" class="logo">
-          <img src="../assets/logo.jpg" alt>
+          <img :src="logo" alt>
         </div>
         <div>
           <form id="formSearch" class="search-form" action="#">
@@ -82,6 +82,7 @@ export default {
   name: "NavBar",
   data() {
     return {
+      logo: require('../assets/logo.png'),
       msg: "",
       show: false,
       searchText: null,
