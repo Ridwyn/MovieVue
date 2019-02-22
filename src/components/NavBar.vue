@@ -158,6 +158,7 @@ img {
   justify-items: center;
   position: static;
   width: 100%;
+   height: 100%;
 }
 
 .bottom-nav {
