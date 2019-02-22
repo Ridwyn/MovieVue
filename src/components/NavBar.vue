@@ -3,7 +3,7 @@
     <div class="NavBar" id="normalNav">
       <div class="top-nav">
         <router-link v-bind:to="{name:'Home'}">
-          <img src="../assets/logo.png" alt>
+          <img src="@/assets/logo.png" alt>
         </router-link>
 
         <div>

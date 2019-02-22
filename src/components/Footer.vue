@@ -4,7 +4,7 @@
       <div class="portfolio">
         <h3>Portfolio:</h3>
         <p>
-          <a href="https://ridwynidriss.com"></a>www.ridwynidriss.com
+          <a href="https://ridwynidriss.com">www.ridwynidriss.com</a>
         </p>
       </div>
       <h3>Copyright &copy; 2019</h3>
@@ -13,7 +13,7 @@
 
     <div class="bottom-footer">
       <div>
-        <img src="../assets/imdblogo.png" alt>
+        <img src="@/assets/imdblogo.png" alt>
       </div>
       <div class="links">
         <a href="https://github.com/Ridwyn">
@@ -64,6 +64,9 @@ export default {
 .bottom-footer {
   display: grid;
   grid-template-rows: (2, 1fr);
+}
+a {
+  text-decoration: none;
 }
 
 .links a {

@@ -57,6 +57,11 @@ export default {
   justify-items: center;
 }
 
+.movie-item:hover {
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1.15);
+}
+
 hr {
   background-image: -webkit-radial-gradient(
     circle,
