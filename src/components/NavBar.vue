@@ -3,7 +3,7 @@
     <div class="NavBar" id="normalNav">
       <div class="top-nav">
         <router-link v-bind:to="{name:'Home'}">
-          <img v-bind:src="logo" alt>
+          <img :src="require('../assets/logo.png')" alt>
         </router-link>
 
         <div>
@@ -37,7 +37,7 @@
     <div v-show="show" class="NavBar" id="mobileNav">
       <div class="top-nav">
         <div id="logo" class="logo">
-          <img :src="logo" alt>
+          <img :src="require('../assets/imdblogo.png')" alt>
         </div>
         <div>
           <form id="formSearch" class="search-form" action="#">
@@ -82,7 +82,6 @@ export default {
   name: "NavBar",
   data() {
     return {
-      logo: require('../assets/logo.png'),
       msg: "",
       show: false,
       searchText: null,
@@ -159,7 +158,7 @@ img {
   justify-items: center;
   position: static;
   width: 100%;
-   height: 100%;
+  height: 100%;
 }
 
 .bottom-nav {

@@ -13,7 +13,7 @@
 
     <div class="bottom-footer">
       <div>
-        <img v-bind:src="imdb" alt>
+        <img :src="require('../assets/imdblogo.png')" alt>
       </div>
       <div class="links">
         <a href="https://github.com/Ridwyn">
@@ -31,9 +31,7 @@
 export default {
   name: "Footer",
   data() {
-    return {
-      imdb: require("../assets/imdblogo.png")
-    };
+    return {};
   }
 };
 </script>
