@@ -25,43 +25,12 @@
         <i class="fas fa-chevron-right fa-3x" id="nxtBtn"></i>
       </span>
     </div>
+    <hr>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
-document.addEventListener("DOMContentLoaded", start);
-let ul;
-function start() {
-  ul = document.querySelector(".my-slider");
-}
-window.addEventListener("load", initFunctions);
-
-function initFunctions() {
-  ul.style.opacity = 1;
-  var slider = new tns({
-    container: ".my-slider",
-    prevButton: "#prevBtn",
-    nextButton: "#nxtBtn",
-    nav: false,
-    items: 6,
-    loop: false,
-    mouseDrag: true,
-    swipeAngle: false,
-    speed: 400,
-    responsive: {
-      360: {
-        edgePadding: 10,
-        gutter: 5,
-        items: 2
-      },
-      700: {
-        items: 6
-      }
-    }
-  });
-}
 
 export default {
   name: "Home",
@@ -71,6 +40,30 @@ export default {
     };
   },
 
+  updated() {
+    new tns({
+      container: ".my-slider",
+      prevButton: "#prevBtn",
+      nextButton: "#nxtBtn",
+      nav: false,
+      items: 6,
+      loop: false,
+      mouseDrag: true,
+      swipeAngle: false,
+      speed: 400,
+      responsive: {
+        360: {
+          edgePadding: 10,
+          gutter: 5,
+          items: 2
+        },
+        700: {
+          items: 6
+        }
+      }
+    });
+    console.log("dom updated");
+  },
   created() {
     this.fetchMovies();
   },
@@ -79,7 +72,9 @@ export default {
     fetchMovies() {
       axios
         .get(
-          "https://api.themoviedb.org/3/movie/upcoming?api_key="+process.env.API_KEY+"&language=en-US&page=1"
+          "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
+            process.env.API_KEY +
+            "&language=en-US&page=1"
         )
         .then(response => {
           console.log(response.data.results);
@@ -102,15 +97,44 @@ export default {
   padding: 1rem 3rem;
 }
 
+hr {
+  background-image: -webkit-radial-gradient(
+    circle,
+    rgba(210, 208, 208, 0.190914) 0%,
+    rgba(210, 208, 208, 0) 90%
+  );
+  background-image: -o-radial-gradient(
+    circle,
+    rgba(210, 208, 208, 0.190914) 0%,
+    rgba(210, 208, 208, 0) 90%
+  );
+  background-image: radial-gradient(
+    circle,
+    rgba(210, 208, 208, 0.190914) 0%,
+    rgba(210, 208, 208, 0) 90%
+  );
+  border: none;
+  height: 2px;
+}
+
 p {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
   color: #fff;
-  font-size: 13px;
-  font-weight: 400;
+  font-weight: 600;
+  margin: 0;
   text-align: center;
+}
+
+h6 {
+  font-size: 14px;
 }
 
 #prevBtn {
@@ -131,7 +155,7 @@ img {
 }
 
 .my-slider {
-  opacity: 0;
+  opacity: 1;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }

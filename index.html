@@ -15,10 +15,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/tiny-slider.css"
     />
 
-    <!-- glider css -->
-    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
-
     <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+    body{margin:0}</style>
     <title>SearchFlix</title>
   </head>
   <body>
@@ -27,62 +27,5 @@
 
     <!-- tiny js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/min/tiny-slider.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", initFunctions);
-
-      function initFunctions() {
-        NavBarToggle();
-        sliderToggle();
-      }
-
-      function sliderToggle() {
-        const left = document.querySelector(".prevBtn");
-        const right = document.querySelector(".nxtBtn");
-
-        // var slider = new tns({
-        //   container: ".my-slider",
-        //   prevButton: "#prevBtn",
-        //   nextButton: "#nxtBtn",
-        //   items: 2,
-        //   loop: false,
-        //   mouseDrag: true,
-        //   swipeAngle: false,
-        //   speed: 400,
-        //   nav: false
-        // });
-      }
-
-      function NavBarToggle() {
-        const navBtn = document.querySelector(".fa-bars");
-        const topNav = document.querySelector(".top-nav");
-        const formSearch = document.querySelector("#formSearch");
-        const logo = document.querySelector("#logo");
-        const bottomNav = document.querySelector(".bottom-nav");
-
-        let display = false;
-
-        navBtn.addEventListener("click", showNav);
-
-        function showNav() {
-          console.log("clicked");
-          if (display == false) {
-            console.log("false");
-            bottomNav.style.height = 73 + "px";
-            topNav.style.height = 73 + "px";
-            formSearch.style.opacity = 1;
-            logo.style.opacity = 1;
-            display = true;
-          } else {
-            console.log("true");
-            topNav.style.height = 0 + "px";
-            bottomNav.style.height = 0 + "px";
-            formSearch.style.opacity = 0;
-            logo.style.opacity = 0;
-            display = false;
-          }
-        }
-      }
-    </script>
   </body>
 </html>
