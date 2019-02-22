@@ -13,14 +13,13 @@
 
     <div class="bottom-footer">
       <div>
-        <img src alt>
-        images goes herer
+        <img src="../assets/imdblogo.png" alt>
       </div>
       <div class="links">
-        <a href>
+        <a href="https://github.com/Ridwyn">
           <i class="fab fa-github"></i>
         </a>
-        <a href>
+        <a href="https://www.themoviedb.org/documentation/api">
           <i class="fas fa-code"></i>
         </a>
       </div>
@@ -48,6 +47,11 @@ export default {
   grid-template-columns: 2fr 1fr;
   margin-top: 5rem;
   padding: 3rem;
+}
+
+.bottom-footer img {
+  height: 100px;
+  width: auto;
 }
 
 .top-footer {

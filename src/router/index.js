@@ -5,6 +5,7 @@ import Movie from "@/components/Movie";
 import Search from "@/components/Search";
 import OnAir from "@/components/OnAir";
 import Account from "@/components/Account";
+import Explore from "@/components/Explore";
 
 Vue.use(Router);
 
@@ -36,6 +37,11 @@ export default new Router({
       path: "/search/",
       name: "Search",
       component: Search
+    },
+    {
+      path: "/explore/",
+      name: "Explore",
+      component: Explore
     }
   ]
 });

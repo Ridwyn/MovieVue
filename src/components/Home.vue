@@ -1,9 +1,10 @@
 <template>
   <div class="Home">
+    <!-- Upcoming -->
     <div class="section-container">
       <h2>Coming Soon...</h2>
       <div class="contents">
-        <ul class="my-slider">
+        <ul id="upcoming" class="my-slider">
           <li v-for="(movie,index) in ComingSoon" :key="index">
             <router-link v-bind:to="{name:'Movie', params:{movie_id:movie.id}}">
               <img v-bind:src="'https://image.tmdb.org/t/p/original'+ movie.poster_path" alt>
@@ -19,13 +20,66 @@
         </ul>
       </div>
       <span>
-        <i class="fas fa-chevron-left fa-3x" id="prevBtn"></i>
+        <i class="fas fa-chevron-left fa-3x prevBtn" id="prev-upcoming"></i>
       </span>
       <span>
-        <i class="fas fa-chevron-right fa-3x" id="nxtBtn"></i>
+        <i class="fas fa-chevron-right fa-3x nxtBtn" id="nxt-upcoming"></i>
       </span>
     </div>
     <hr>
+    <!-- Top Rated -->
+    <div class="section-container">
+      <h2>Top Rated</h2>
+      <div class="contents">
+        <ul id="top-rated" class="my-slider">
+          <li v-for="(movie,index) in TopRated" :key="index">
+            <router-link v-bind:to="{name:'Movie', params:{movie_id:movie.id}}">
+              <img v-bind:src="'https://image.tmdb.org/t/p/original'+ movie.poster_path" alt>
+              <div>
+                <h6>{{movie.title}}</h6>
+              </div>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                {{movie.vote_average}}
+              </p>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <span>
+        <i class="fas fa-chevron-left fa-3x prevBtn" id="prev-rated"></i>
+      </span>
+      <span>
+        <i class="fas fa-chevron-right fa-3x nxtBtn" id="nxt-rated"></i>
+      </span>
+    </div>
+    <hr>
+    <!-- Popular section -->
+    <div class="section-container">
+      <h2>Popular</h2>
+      <div class="contents">
+        <ul id="popular" class="my-slider">
+          <li v-for="(movie,index) in Popular" :key="index">
+            <router-link v-bind:to="{name:'Movie', params:{movie_id:movie.id}}">
+              <img v-bind:src="'https://image.tmdb.org/t/p/original'+ movie.poster_path" alt>
+              <div>
+                <h6>{{movie.title}}</h6>
+              </div>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                {{movie.vote_average}}
+              </p>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <span>
+        <i class="fas fa-chevron-left fa-3x prevBtn" id="prev-popular"></i>
+      </span>
+      <span>
+        <i class="fas fa-chevron-right fa-3x nxtBtn" id="nxt-popular"></i>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -36,15 +90,18 @@ export default {
   name: "Home",
   data() {
     return {
-      ComingSoon: []
+      ComingSoon: [],
+      TopRated: [],
+      Popular: [],
+      Latest: []
     };
   },
 
   updated() {
     new tns({
-      container: ".my-slider",
-      prevButton: "#prevBtn",
-      nextButton: "#nxtBtn",
+      container: "#upcoming",
+      prevButton: "#prev-upcoming",
+      nextButton: "#nxt-upcoming",
       nav: false,
       items: 6,
       loop: false,
@@ -62,14 +119,61 @@ export default {
         }
       }
     });
-    console.log("dom updated");
+
+    // slider fro top rated
+    new tns({
+      container: "#top-rated",
+      prevButton: "#prev-rated",
+      nextButton: "#nxt-rated",
+      nav: false,
+      items: 6,
+      loop: false,
+      mouseDrag: true,
+      swipeAngle: false,
+      speed: 400,
+      responsive: {
+        360: {
+          edgePadding: 10,
+          gutter: 5,
+          items: 2
+        },
+        700: {
+          items: 6
+        }
+      }
+    });
+
+    // slider for popular
+    new tns({
+      container: "#popular",
+      prevButton: "#prev-popular",
+      nextButton: "#nxt-popular",
+      nav: false,
+      items: 6,
+      loop: false,
+      mouseDrag: true,
+      swipeAngle: false,
+      speed: 400,
+      responsive: {
+        360: {
+          edgePadding: 10,
+          gutter: 5,
+          items: 2
+        },
+        700: {
+          items: 6
+        }
+      }
+    });
   },
   created() {
-    this.fetchMovies();
+    this.fetchComingSoon();
+    this.fetchTopRated();
+    this.fetchPopular();
   },
 
   methods: {
-    fetchMovies() {
+    fetchComingSoon() {
       axios
         .get(
           "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
@@ -77,10 +181,38 @@ export default {
             "&language=en-US&page=1"
         )
         .then(response => {
-          console.log(response.data.results);
-          response.data.results.forEach(movie => {
-            this.ComingSoon.push(movie);
-          });
+          this.ComingSoon = response.data.results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    // Fetching top rated
+    fetchTopRated() {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/movie/top_rated?api_key=" +
+            process.env.API_KEY +
+            "&language=en-US&page=1"
+        )
+        .then(response => {
+          this.TopRated = response.data.results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+
+    // Fetching Popular
+    fetchPopular() {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/movie/popular?api_key=" +
+            process.env.API_KEY +
+            "&language=en-US&page=1"
+        )
+        .then(response => {
+          this.Popular = response.data.results;
         })
         .catch(err => {
           console.log(err);
@@ -137,15 +269,15 @@ h6 {
   font-size: 14px;
 }
 
-#prevBtn {
+.prevBtn {
   position: absolute;
-  left: 0;
+  left: 2%;
   top: 50%;
 }
 
-#nxtBtn {
+.nxtBtn {
   position: absolute;
-  right: 0;
+  right: 2%;
   top: 50%;
 }
 

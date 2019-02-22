@@ -24,7 +24,10 @@
           <img v-bind:src="'https://image.tmdb.org/t/p/original'+ movie.posterimg" alt>
           <div class="details-info">
             <h2>{{movie.title}}</h2>
-            <h5>{{movie.vote}}</h5>
+            <h5>
+              <i v-for="(n,index) in parseInt(movie.vote)" v-bind:key="index" class="fas fa-star"></i>
+              {{movie.vote}}
+            </h5>
             <h5>{{movie.status}} | {{movie.release_date}} | {{movie.language}}</h5>
             <div class="genre">
               <h6 v-for="(genre,index) in genres" :key="index">{{genre.name}}</h6>
@@ -170,6 +173,10 @@ export default {
   right: 0;
   opacity: 0;
   transition: all 0.7 ease-in-out;
+}
+
+.fa-star {
+  color: #db9614;
 }
 
 .share-links i {

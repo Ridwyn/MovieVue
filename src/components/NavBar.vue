@@ -2,6 +2,40 @@
   <div>
     <div class="NavBar" id="normalNav">
       <div class="top-nav">
+        <router-link v-bind:to="{name:'Home'}">
+          <img src="../assets/logo.png" alt>
+        </router-link>
+
+        <div>
+          <form id="formSearch" class="search-form" action="#">
+            <input v-model="searchText" type="search" name="search" placeholder="Search Movie...">
+            <a v-on:click="loadSearch">
+              <i class="fas fa-search"></i>
+            </a>
+          </form>
+        </div>
+      </div>
+
+      <div class="nav-links bottom-nav">
+        <div>
+          <router-link v-bind:to="{name:'OnAir'}">
+            <i class="fas fa-wifi"></i>
+          </router-link>
+        </div>
+        <div>
+          <router-link v-bind:to="{name:'Account'}">
+            <i class="far fa-user"></i>
+          </router-link>
+        </div>
+        <div>
+          <router-link v-bind:to="{name:'Explore'}">
+            <i class="fas fa-compass"></i>
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <div v-show="show" class="NavBar" id="mobileNav">
+      <div class="top-nav">
         <div id="logo" class="logo">
           <img src="../assets/logo.jpg" alt>
         </div>
@@ -27,42 +61,9 @@
           </router-link>
         </div>
         <div>
-          <a href="#">
+          <router-link v-bind:to="{name:'Explore'}">
             <i class="fas fa-compass"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div v-show="show" class="NavBar" id="mobileNav">
-      <div class="top-nav">
-        <div id="logo" class="logo">
-          <img src="../assets/logo.jpg" alt>
-        </div>
-        <div>
-          <form id="formSearch" class="search-form" action="#">
-            <input v-model="searchText" type="search" name="search" placeholder="Search Movie...">
-            <a v-on:click="loadSearch">
-              <i class="fas fa-search"></i>
-            </a>
-          </form>
-        </div>
-      </div>
-
-      <div class="nav-links bottom-nav">
-        <div>
-          <a href="#">
-            <i class="fas fa-theater-masks"></i>
-          </a>
-        </div>
-        <div>
-          <a href="#">
-            <i class="far fa-user"></i>
-          </a>
-        </div>
-        <div>
-          <a href="#">
-            <i class="fas fa-compass"></i>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -152,7 +153,7 @@ img {
 .top-nav {
   background-color: #2871b1;
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 250px 1fr;
   align-items: center;
   justify-items: center;
   position: static;
@@ -249,6 +250,7 @@ a {
     justify-items: center;
     align-items: center;
     width: 100%;
+    z-index: 10;
   }
 }
 </style>
