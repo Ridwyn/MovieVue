@@ -36,7 +36,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .footer {
   background-color: #f3f3f3;
@@ -52,8 +52,7 @@ export default {
   width: auto;
 }
 
-.top-footer {
-}
+
 .portfolio {
   display: grid;
   grid-template-columns: (2, 1fr);
