@@ -13,7 +13,7 @@
 
     <div class="bottom-footer">
       <div>
-        <img :src="require('../assets/imdblogo.png')" alt>
+        <img :src="require('../assets/img/imdblogo.png')" alt>
       </div>
       <div class="links">
         <a href="https://github.com/Ridwyn">
@@ -51,7 +51,6 @@ export default {
   height: 100px;
   width: auto;
 }
-
 
 .portfolio {
   display: grid;

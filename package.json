@@ -6,12 +6,13 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start-dev": "npm run dev",
     "build": "node build/build.js",
     "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "ajv": "^6.9.1",
+    "axios": "^0.18.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
